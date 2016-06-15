@@ -29,7 +29,7 @@ function getSingleMovie() {
 		$id = 2;
 	}
 
-	$sql = "SELECT id, title, description, release_date FROM movies WHERE id ='$id'";
+	$sql = "SELECT id, title, description, release_date, duration FROM movies WHERE id ='$id'";
 
 	$result = $dbc->query($sql);
 
@@ -48,6 +48,36 @@ function deleteMovie() {
 	$result = $dbc->query($sql);
 	header("Location:./");
 }
+function editMovie() {
+
+	global $dbc;
+	//obtain id from url
+	if(isset($_GET['id'])){
+		$id = $_GET['id'];
+	}
+	
+	//obtain all information from $_POST
+	$title=$_POST['title'];
+	$description=$_POST['description'];
+	$rating=$_POST['rating'];
+	$duration=$_POST['duration'];
+	$date=$_POST['release_date'];
+
+	$sql = "UPDATE movies SET title='$title', description='$description', rating='$rating', release_date='$date', duration='$duration' WHERE id='$id'";
+	$result = $dbc->query($sql);
+	header("Location:./?page=movie&id=$id");
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
