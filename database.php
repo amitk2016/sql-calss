@@ -26,7 +26,7 @@ function getSingleMovie() {
 	if(isset($_GET['id'])){
 		$id = $_GET['id'];
 	} else {
-		$id = 2;
+		$id = null;
 	}
 
 	$sql = "SELECT id, title, description, release_date, duration FROM movies WHERE id ='$id'";
@@ -51,12 +51,9 @@ function deleteMovie() {
 function editMovie() {
 
 	global $dbc;
-	//obtain id from url
-	if(isset($_GET['id'])){
-		$id = $_GET['id'];
-	}
 	
 	//obtain all information from $_POST
+	$id = $_POST['id'];
 	$title=$_POST['title'];
 	$description=$_POST['description'];
 	$rating=$_POST['rating'];
@@ -68,6 +65,41 @@ function editMovie() {
 	header("Location:./?page=movie&id=$id");
 }
 
+function addMovie() {
+
+	global $dbc;
+	//obtaining all values from $_POST array
+
+	$title=$_POST['title'];
+	$description=$_POST['description'];
+	$rating=$_POST['rating'];
+	$duration=$_POST['duration'];
+	$date=$_POST['release_date'];
+
+	$sql = "INSERT INTO movies(title, description, rating, duration, release_date) 
+			VALUES ('$title','$description','$rating','$duration','$date')";
+
+	$dbc->query($sql);
+	header("Location:./?page=home");
+}
+ function genreList() {
+ 	global $dbc;
+
+ 	$id = isset($_GET['id']) ? $_GET['id'] : null;
+
+ 	$sql="SELECT id, genres FROM genres JOIN movie_genre ON id=genre_id WHERE movie_id = '$id'";
+
+ 	$result = $dbc->query($sql);
+
+ 	$genreArray = [];
+
+	while($allGenres = $result->fetch_assoc()){
+		$genreArray[]= $allGenres;
+	}
+	return $genreArray;
+
+
+ }
 
 
 

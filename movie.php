@@ -1,5 +1,6 @@
 <?php
-// var_dump($singlemovie);
+$genres = genreList();
+
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +17,13 @@
   	<p>Release Year - <?=$singlemovie['release_date']?></p>
   	<p><?=$singlemovie['description']?></p>
     <p><?=$singlemovie['duration']?></p>
+    <?php 
+    foreach ($genres as $genre) {
+      echo "<strong><span>". $genre['genres'] ."&nbsp;</span></strong>";
+    }
 
+    ?>
+    <br>
     <!--When this link is clicked, link goes to index page with page= -->
     <!--switches to case with  -->
   	<a href="./?page=movieForm&amp;id=<?=$singlemovie['id']?>">Edit Movie</a>
