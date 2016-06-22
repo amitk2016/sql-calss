@@ -1,9 +1,19 @@
 <?php
 
-include "database.php";
+// include "database.php";
 // include "db_pdo.php";
-$movies = getMovieList();
-$singlemovie = getSingleMovie();
+include "Models/Database.php";
+include "Models/Movie.php";
+
+//instantiate an object for Movie
+
+$movie = new Movie;
+$movies = $movie->SelectAll();
+$singlemovie = $movie->find();
+
+
+// $movies = getMovieList();
+// $singlemovie = getSingleMovie();
 
 
 //ternary if operator to get page information
