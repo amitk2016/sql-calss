@@ -40,7 +40,7 @@ switch ($page) {
  		editMovie();
  		break;
 	case 'delete':
-		deleteMovie();
+		Movie::deleteMovie();
 		break;
  	default:
  		echo "Error 404! Page not found.";
