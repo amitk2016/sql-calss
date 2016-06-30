@@ -52,7 +52,7 @@ abstract class Database {
 
 
 	}
-	public function deleteMovie() {
+	public static function deleteMovie() {
 
 		$dbc = static::getDatabaseConnection();
 
@@ -65,9 +65,6 @@ abstract class Database {
 		$statement->bindValue(":id", $id);
 
 		$statement->execute();
-
-		header("Location:./");
-
 	}
 }
 
