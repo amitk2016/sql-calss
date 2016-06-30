@@ -13,6 +13,8 @@ class MoviesController extends Controller
 		$view->render();
 	}
 	public function edit() {
+		$movie = new Movie;
+		$singlemovie = $movie->find();
 		
 		$view = new MovieFormView(compact('singlemovie'));
 		$view->render();
@@ -21,5 +23,10 @@ class MoviesController extends Controller
 
 		Movie::deleteMovie();
 		header("Location:./");
+	}
+	public function add(){
+		$view= new MovieFormView;
+		$view->render();
+
 	}
 }

@@ -1,7 +1,7 @@
 <?php 
 
 //set up connection and creating a db handler
-$dsn = "mysql:host=localhost;dbname=sindhu_db;charset=utf8";
+$dsn = "mysql:host=localhost;dbname=amit_db;charset=utf8";
 
 $dbc = new PDO($dsn,'root','');
 

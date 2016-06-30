@@ -5,7 +5,7 @@ abstract class Database {
 
 	protected static function getDatabaseConnection() {
 
-		$dsn = "mysql:host=localhost;dbname=sindhu_db;charset=utf8";
+		$dsn = "mysql:host=localhost;dbname=amit_db;charset=utf8";
 		$dbc = new PDO($dsn, 'root', '');
 
 		$dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

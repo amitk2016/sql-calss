@@ -1,6 +1,6 @@
 <?php
 
-$dbc = new mysqli('localhost', 'root','','sindhu_db');
+$dbc = new mysqli('localhost', 'root','','amit_db');
 
 function getMovieList() {
 
